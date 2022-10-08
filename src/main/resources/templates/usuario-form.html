@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<main>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col">
+                <form th:action="@{/usuarios/update}" th:object="${usuario}" method="post" autocomplete="off"
+                      class="needs-validation" novalidate>
+                    <input type="hidden" th:field="*{id}">
+
+                    <div class="form-floating mb-3">
+                        <input type="text" th:field="*{username}" id="username" class="form-control"
+                               readonly>
+                        <label for="username">Nombre</label>
+                        <div class="invalid-feedback">El nombre es requerido</div>
+                    </div>
+
+
+                    <input type="hidden" th:field="*{password}" id="password" class="form-control"
+                           readonly>
+
+
+                    <div class="form-floating mb-3">
+
+                        <select th:field="*{rol}" id="rol" class="form-select" aria-label="Seleccionar rol" required>
+                            <option th:each="rol : ${roles}" th:text="${rol.name}" th:value="${rol.id}"></option>
+                        </select>
+                        <label for="rol">Rol</label>
+                        <div class="invalid-feedback">El rol es requerido!</div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/validation.js}"></script>
+</body>
+</html>
