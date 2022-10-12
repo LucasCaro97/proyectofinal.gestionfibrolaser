@@ -4,6 +4,7 @@ import com.gestion.fibrolaser.entidades.Pedido;
 import com.gestion.fibrolaser.repositorios.EstadoPedidoRepository;
 import com.gestion.fibrolaser.repositorios.PedidoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +27,7 @@ public class PedidoServicio {
         pedido.setFechaIngreso(LocalDate.now());
         pedido.setFechaEntrega(pedidoDto.getFechaEntrega());
         pedido.setEstadoPedido(pedidoDto.getEstadoPedido());
-        pedido.setSenia(500);
+        pedido.setSenia(pedidoDto.getSenia());
         pedidoRepository.save(pedido);
 
     }
@@ -44,7 +45,11 @@ public class PedidoServicio {
     }
 
     @Transactional
-    public List<Pedido> getAll(){ return pedidoRepository.findAll();    }
+    public List<Pedido> getAll(){
+        Sort sort = Sort.by("fechaEntrega").ascending();
+        return pedidoRepository.findAll(sort);
+
+    }
 
     @Transactional
     public Pedido getById(Integer id){ return pedidoRepository.findById(id).get(); }

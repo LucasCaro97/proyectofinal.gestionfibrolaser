@@ -48,11 +48,21 @@ public class UsuarioControlador {
     @PostMapping("/update")
     RedirectView update(Usuario dto, RedirectAttributes attributes){
         RedirectView redirect = new RedirectView("/usuarios");
-        usuarioServicio.update(dto);
-        System.out.println(dto.getUsername() + " - " + dto.getRol().getName());
+        usuarioServicio.updateRole(dto);
+        System.out.println(dto.getUsername() + " - " + dto.getRol().getName() + dto.getId());
         attributes.addFlashAttribute("exito", "Se ha modificado el rol del usuario correctamente");
         return redirect;
     }
 
+    /*
+    @PostMapping("/update")
+    RedirectView update(Usuario dto, RedirectAttributes attributes){
+        RedirectView redirect = new RedirectView("/usuarios");
+        usuarioServicio.updateRole(dto);
+        System.out.println(dto.getUsername() + " - " + dto.getRol().getName());
+        attributes.addFlashAttribute("exito", "Se ha modificado el rol del usuario correctamente");
+        return redirect;
+    }
+    */
 
 }

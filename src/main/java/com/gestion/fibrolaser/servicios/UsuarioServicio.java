@@ -42,8 +42,9 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     @Transactional
-    public void update(Usuario usuarioDto){
+    public void updateRole(Usuario usuarioDto){
         Usuario usuario = new Usuario();
+        usuario = usuarioRepository.findById(usuarioDto.getId()).get();
         usuario.setRol(usuarioDto.getRol());
         usuarioRepository.save(usuario);
     }

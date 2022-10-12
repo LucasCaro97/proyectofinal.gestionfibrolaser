@@ -39,7 +39,7 @@
                             <td th:text="${ped.estadoPedido.nombre}"></td>
                             <td th:text="${ped.senia}"></td>
                             <td th:text="${ped.fechaEntrega}"></td>
-                            <td><a class="btn btn-primary">Editar</a></td>
+                            <td><a class="btn btn-warning" th:href="@{pedidos/form/__${ped.id}__}">Actualizar</a></td>
 
                         </tr>
                         </tbody>
