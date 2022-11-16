@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<main>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col">
+                <form th:action="@{/pedidos/__${action}__}" th:object="${pedido}" method="post" autocomplete="off"
+                      class="needs-validation" novalidate>
+                    <input type="hidden" th:field="*{id}">
+
+                    <div class="form-floating mb-3">
+
+                        <select th:field="*{cliente}" id="cliente" class="form-select" aria-label="Seleccionar cliente" required>
+                            <option selected value="">Ingresar cliente</option>
+                            <option th:each="cte : ${clientes}" th:text="${cte.nombre}" th:value="${cte.id}"></option>
+                        </select>
+                        <label for="cliente">Cliente</label>
+                        <div class="invalid-feedback">El cliente es requerido!</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" th:field="*{descripcion}"  id="descripcion" class="form-control" required>
+                        <label for="descripcion">Descripcion</label>
+                        <div class="invalid-feedback">La descripcion es requerida!</div>
+                    </div>
+
+
+
+                    <div class="form-floating mb-3">
+                        <input type="date" th:field="*{fechaEntrega}" id="fechaEntrega" class="form-control" placeholder="03-03-2023">
+                        <label for="fechaEntrega">Fecha entrega</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+
+                        <select th:field="*{estadoPedido}" id="estadoPedido" class="form-select" aria-label="Seleccionar estado" required>
+                            <option selected value="">Ingresar Estado</option>
+                            <option th:each="est : ${estados}" th:text="${est.nombre}" th:value="${est.id}"></option>
+                        </select>
+                        <label for="estadoPedido">Estado Pedido</label>
+                        <div class="invalid-feedback">El estado es requerido!</div>
+                    </div>
+
+
+                    <div class="form-floating mb-3">
+                        <input type="number" th:field="*{senia}" id="senia" class="form-control">
+                        <label for="senia">Seña</label>
+                    </div>
+
+
+                    <button th:text="${action == 'create' ? 'Create' : 'Update'}" type="submit" class="btn btn-primary"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/validation.js}"></script>
+</body>
+</html>
