@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<main>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col">
+                <div th:if="${exito}" th:text="${exito}" class="alert alert-success" role="alert"></div>
+
+                <div th:if="${clientes.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+                    Debe ingresar clientes <a th:href="@{clientes/form}" class="alert-link">Crear Cliente</a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <div th:unless="${clientes.isEmpty()}" class="table-responsive">
+                    <a class="btn btn-primary mb-2" th:href="@{/clientes/form}">Crear Cliente</a>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <tr class="table-dark">
+                            <th>Nombre</th>
+                            <th>Telefono</th>
+                            <th>Email
+                            </th>
+                            <th>Accion</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="cte : ${clientes}">
+                            <td th:text="${cte.nombre}"></td>
+                            <td th:text="${cte.telefono}"></td>
+                            <td th:text="${cte.email}"></td>
+                            <td><a class="btn btn-primary">Contactar</a></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

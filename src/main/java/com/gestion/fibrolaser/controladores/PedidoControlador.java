@@ -61,6 +61,8 @@ public class PedidoControlador {
     public ModelAndView getForm(@PathVariable Integer id){
         ModelAndView mav = new ModelAndView("form-pedidos");
         mav.addObject("pedido", pedidoServicio.getById(id));
+        mav.addObject("clientes", clienteServicio.getAll());
+        mav.addObject("estados", estadoPedidoServicio.getAll());
         mav.addObject("action", "update");
         return mav;
     }
