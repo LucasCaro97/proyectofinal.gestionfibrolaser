@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="fibrolaser - BKP" />
+        <module name="proyectofinal.gestionfibrolaser" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,6 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="fibrolaser" options="-parameters" />
       <module name="fibrolaser - BKP" options="-parameters" />
+      <module name="proyectofinal.gestionfibrolaser" options="-parameters" />
     </option>
   </component>
 </project>
