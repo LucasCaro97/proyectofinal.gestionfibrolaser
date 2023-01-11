@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fibrolaser - Artistica</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9cf5630080.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/estilostablas.css}">
+</head>
+<body>
+
+<header class="hero">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">LOGO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Pagina Principal</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Empresa</a></li>
+                    <li class="nav-item" sec:authorize="hasRole('CLIENTE')">
+                        <a href="#" class="nav-link text-white">Realizar Pedido</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAnyRole('ADMIN', 'ATENCION')">
+                        <a th:href="@{/clientes}" class="nav-link text-white">Clientes</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAnyRole('ADMIN', 'ATENCION', 'OPERADOR' , 'DISEÑADOR')">
+                        <a th:href="@{/pedidos}"  class="nav-link text-white">Pedidos</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAnyRole('ADMIN')">
+                        <a th:href="@{/estadospedidos}"  class="nav-link text-white">Estados Ped</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                        <a th:href="@{/usuarios}"  class="nav-link text-white">Usuarios</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                        <a th:href="@{/roles}"  class="nav-link text-white">Roles</a>
+                    </li>
+                </ul>
+                <a class="btn btn-dark" th:href="@{/logout}" >Cerrar Sesion</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col">
+                <form th:action="@{/pedidos/__${action}__}" th:object="${pedido}" method="post" autocomplete="off"
+                      class="needs-validation" novalidate>
+                    <input type="hidden" th:field="*{id}">
+
+                    <div class="col-4 mb-3">
+                    <select th:field="*{usuario}" id="usuario" class="form-select" aria-label="Seleccionar usuario">
+                        <option selected th:value="${session.id}" th:text="|USUARIO - ${session.username}|"></option>
+                    </select>
+                    </div>
+
+                    <div th:if="${session.rol != 'CLIENTE'}" class="form-floating mb-3">
+                        <select  th:field="*{cliente}" id="cliente" class="form-select" aria-label="Seleccionar cliente" required>
+                            <option selected value="">Ingrese un cliente</option>
+                            <option th:each="cte : ${clientes}" th:text="${cte.nombre}" th:value="${cte.id}"></option>
+                        </select>
+                        <label for="cliente">Cliente</label>
+                        <div class="invalid-feedback">El cliente es requerido!</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" th:field="*{descripcion}"  id="descripcion" class="form-control" required>
+                        <label for="descripcion">Descripcion</label>
+                        <div class="invalid-feedback">La descripcion es requerida!</div>
+                    </div>
+
+
+
+                    <div class="form-floating mb-3">
+                        <input type="date" th:field="*{fechaEntrega}" id="fechaEntrega" class="form-control" placeholder="03-03-2023">
+                        <label for="fechaEntrega">Fecha entrega</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+
+                           <select th:field="*{estadoPedido}" id="estadoPedido" class="form-select" aria-label="Seleccionar estado">
+                            <option th:each="est : ${estados}" th:text="${est.nombre}" th:value="${est.id}"></option>
+                        </select>
+                        <label for="estadoPedido">Estado Pedido</label>
+                        <div class="invalid-feedback">El estado es requerido!</div>
+                    </div>
+
+
+                    <div class="form-floating mb-3">
+                        <input type="number" th:field="*{senia}" id="senia" class="form-control">
+                        <label for="senia">Seña</label>
+                    </div>
+
+
+                    <button th:text="${action == 'create' ? 'Create' : 'Update'}" type="submit" class="btn btn-primary"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/validation.js}"></script>
+</body>
+</html>

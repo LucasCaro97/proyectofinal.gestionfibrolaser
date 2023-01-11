@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/style-login-signup.css}">
+    <title>FIBROLASER - Registro</title>
+</head>
+
+<body>
+
+<header th:replace="fragments/auth-header :: header"></header>
+
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-4 mx-auto px-0">
+                <div th:if="${exception}" th:text="${exception}" class="alert alert-danger shadow text-center"></div>
+
+                <div class="card text-center shadow">
+                    <div class="card-header">
+                        <h3>Sign up</h3>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/auth/register}" th:object="${user}" method="post" autocomplete="off"
+                                class="needs-validation mb-4" novalidate>
+
+                            <div class="form-group mb-3">
+                                <input type="text" th:field="*{nombreCompleto}" placeholder="Nombre Completo" class="form-control"
+                                       required/>
+                                <div class="invalid-feedback text-start">El nombre es requerido!</div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <input type="text" th:field="*{username}" placeholder="Nombre de usuario" class="form-control"
+                                       required/>
+                                <div class="invalid-feedback text-start">Nombre de Usuario es requerido!</div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <input type="password" th:field="*{password}" placeholder="Contraseña"
+                                       class="form-control"
+                                       required/>
+                                <div class="invalid-feedback text-start">La contraseña es requerida!</div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <input type="text" th:field="*{telefono}" placeholder="Telefono" class="form-control"
+                                       required/>
+                                <div class="invalid-feedback text-start">El telefono es requerido!</div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <input type="text" th:field="*{ciudad}" placeholder="Ciudad" class="form-control"/>
+                            </div>
+
+                            <div class="form-group d-grid gap-2">
+                                <button class="btn btn-success" type="submit">Registrarse</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/validation.js}"></script>
+</body>
+</html>

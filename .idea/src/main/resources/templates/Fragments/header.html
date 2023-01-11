@@ -1,0 +1,28 @@
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a th:href="@{/auth/home}" class="navbar-brand">Home</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                    aria-controls="menu" aria-expanded="false" aria-label="Show / Hide Menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" sec:authorize="hasAnyRole('ADMIN', 'ATENCION')"><a th:href="@{/clientes}" class="nav-link text-white">Clientes</a></li>
+                    <li class="nav-item"><a th:href="@{/pedidos}"  class="nav-link text-white">Pedidos</a></li>
+                    <li class="nav-item" sec:authorize="hasAnyRole('ADMIN', 'ATENCION')"><a th:href="@{/estadospedidos}"  class="nav-link text-white">Estados Ped</a></li>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')"><a th:href="@{/usuarios}"  class="nav-link text-white">Usuarios</a></li>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')"><a th:href="@{/roles}"  class="nav-link text-white">Roles</a></li>
+
+                </ul>
+
+                <a class="btn btn-light" th:href="@{/logout}" >Sign out</a>
+            </div>
+        </div>
+    </nav>
+
+
+</header>

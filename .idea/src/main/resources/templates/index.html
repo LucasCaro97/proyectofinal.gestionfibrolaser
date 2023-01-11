@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fibrolaser - Artistica</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9cf5630080.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/estiloslandingpage.css}">
+</head>
+
+<body>
+<header class="hero">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">LOGO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Pagina Principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Empresa</a>
+                    </li>
+                </ul>
+
+                <a class="btn btn-dark me-2" th:href="@{/auth/login}">Iniciar sesion</a>
+                <a class="btn btn-dark" th:href="@{/auth/sign-up}">Registrate</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="textos-hero">
+        <h1>Bienvenido a Fibrolaser</h1>
+        <p>Tienda de artesanias y artistica</p>
+        <a class="btn mb-2" href="https://wa.me/5493764222055"><i class="fa-brands fa-whatsapp"></i> Contacto - Posadas</a>
+        <a class="btn mb-2" href="https://wa.me/5493751215070"><i class="fa-brands fa-whatsapp"></i> Contacto - Eldorado</a>
+    </div>
+    <div class="svg-hero" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                                                                        style="height: 100%; width: 100%;">
+        <path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+              style="stroke: none; fill: #fff;"></path>
+    </svg></div>
+</header>
+
+
+<section class="wave-contenedor website">
+    <img src="https://st2.depositphotos.com/1177973/6083/i/600/depositphotos_60837703-stock-photo-beautiful-still-life-with-professional.jpg" alt="">
+    <div class="contenedor-textos-main">
+        <h2 class="titulo left">Productos</h2>
+        <p class="parrafo">Proximamante podras conocer nuestros productos desde donde sea que estes!</p>
+        <a href="" class="cta">Haz clic aqui</a>
+    </div>
+</section>
+
+<section class="info">
+    <div class="contenedor">
+        <h2 class="titulo left">Registrate como cliente</h2>
+        <p>Como cliente proximamante tendras la posibilidad de realizar tus pedidas via web y proximamente obendras mas beneficios!</p>
+        <a class="btn btn-dark" th:href="@{/auth/sign-up}"> Registrarme </a>
+    </div>
+</section>
+
+<section class="cards contenedor">
+    <h2 class="titulo">Nuestros Servicios</h2>
+    <div class="content-cards">
+        <div class="card" style="width: 18rem;">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_602774-MLA49172821832_022022-O.jpg" class="card-img-top" alt="Souvenir personalizado">
+            <div class="card-body">
+                <h3>Souvenirs y Centros de Mesa</h3>
+                <p class="card-text">Productos 100% personalizados para tus fiestas o eventos</p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="https://scontent.fcor3-1.fna.fbcdn.net/v/t1.6435-9/61673388_535743896830469_1358755767863214080_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=p7IIw2k4zJ0AX_UVQxh&_nc_ht=scontent.fcor3-1.fna&oh=00_AfCUerQJiI5YYvI9t9P_aFVISKiuumoVnxRt0lNQqT-16w&oe=63E3F89A" class="card-img-top" alt="Imagen trofeo">
+            <div class="card-body">
+                <h3>Trofeos/Medallas</h3>
+                <p class="card-text">Fabricamos Menciones/Medallas para competencias o eventos</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_979810-MLA41930236995_052020-O.webp" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3>Accesorios variados</h3>
+                <p class="card-text">Contamos con accesorios para que puedas personalizar tus productos como mas te guste</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ubicacion">
+    <h2 class="titulo">Donde nos ubicamos</h2>
+    <div class="content-cards">
+
+        <div class="contenedor-mapas">
+            <h5>Local Posadas</h5>
+            <iframe class="mapas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28347.705966395042!2d-55.92196763915208!3d-27.361244499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457bfaab0abbf5f%3A0xa71788ad6836bece!2sFibrolaser%20Posadas!5e0!3m2!1ses-419!2sar!4v1673294358459!5m2!1ses-419!2sar" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="contenedor-mapas">
+            <h5>Local Eldorado</h5>
+            <iframe class="mapas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3573.463730291725!2d-54.5849268853081!3d-26.408507778723163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f76f017be9226b%3A0x199cd4211ea0f092!2sArtesanias%20Tierra%20Colorada!5e0!3m2!1ses-419!2sar!4v1673294594646!5m2!1ses-419!2sar" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+
+    </div>
+</section>
+
+
+
+<footer id="contacto">
+    <div class="contenedor">
+        <h2 class="titulo">Contact us</h2>
+        <form action="" class="form">
+            <input class="input"  type="text" name="" id="" placeholder="Nombre">
+            <input class="input"  type="email" name="" id="" placeholder="Email">
+            <textarea  class="input" name="" id="" cols="30" rows="10" placeholder="Mensaje"></textarea>
+            <input class="input"  type="submit" value="Enviar">
+        </form>
+    </div>
+</footer>
+
+<div class="bg-dark fixed-bottom text-center text-white py-3" >
+    <span th:text="${session.id != null} ? |${session.username} - ${session.rol}| : 'FIBROLASER'"></span>
+</div>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
